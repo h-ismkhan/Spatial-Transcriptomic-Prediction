@@ -73,7 +73,7 @@ they are used by the competitors' `Our-Encoder` variants and give the reference 
 Every competitor exists in two **variants**:
 
 * `Default` – the competitor's own image encoder (ResNet50 for BLEEP, DenseNet121 for mclSTExp, a UNet for GHIST,
-  frozen ResNet50 features for STORM, a multi-scale conv/CBAM branch + foundation features for FmH2ST).
+  frozen ResNet50 features for STORM).
   The same encoder also processes up to `DEFAULT_CTX_PATCHES` neighbour patches and a small network processes the nuclei, so
   that every method sees all three inputs. Pixels are down-scaled to `NATIVE_IMG_SIZE`.
 * `Our-Encoder` – the encoder of OURS (frozen embeddings + nuclei network + projections + fusion) replaces the image
@@ -153,9 +153,9 @@ Main settings:
 |---|---|
 | `CONFIGS` | missing-data configurations to run |
 | `N_RUNS`, `BASE_SEED` | number of repetitions and first seed |
-| `COMPETITORS` | e.g. `[("OURS","0","mean"), ("BLEEP","0"), ("OURS-KVOTE","0","mean")]`; methods: `OURS`, `OURS-BRANCHED`, `OURS-KVOTE`, `BLEEP`, `GHIST`, `MCLSTEXP`, `STORM`, `FMH2ST` |
+| `COMPETITORS` | e.g. `[("OURS","0","mean"), ("BLEEP","0")]`; methods: `OURS`, `BLEEP`, `GHIST`, `MCLSTEXP`, `STORM`, `FMH2ST` |
 | `VARIANTS` | `("default","our_encoder")` – which encoder variants of the competitors to run (no effect on OURS-family) |
-| `FOUNDATION_ENCODERS`, `FUSIONS`, `KVOTE_KS` | the pools of §2 |
+| `FOUNDATION_ENCODERS`, `FUSIONS` | the pools of §2 |
 | `HPARAMS`, `RAW_EPOCHS`, `RAW_PATIENCE`, `RAW_MAX_STEPS_PER_EPOCH` | optimisation settings |
 | `ENSEMBLE_SIZE_CACHED`, `ENSEMBLE_SIZE_RAW` | models averaged for cheap (cached-feature) / expensive (pixel) methods |
 | `NATIVE_IMG_SIZE`, `DEFAULT_CTX_PATCHES` | resolution and number of neighbour patches of `Default` pixel encoders |
@@ -200,6 +200,6 @@ test/            synthetic smoke test (generated slides; checks that the whole p
 
 ## 10. Acknowledgements
 
-This work builds on the methods BLEEP, GHIST, mclSTExp, STORM and FmH2ST, on the single-cell nuclei annotations of CellViT,
+This work builds on the methods BLEEP, GHIST, mclSTExp and STORM, on the single-cell nuclei annotations of CellViT,
 on the pathology foundation models H-optimus-0/1, UNI and Prov-GigaPath, and on the HEST-1k dataset; please cite the
 original works accordingly.
