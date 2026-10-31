@@ -1,6 +1,6 @@
 In the name of God
 
-# Multimodal Gene-Expression Regression from H&E with Missing Information Using Pathology Foundation Models
+# Spatial Transcriptomic Prediction in Cancer Pathology under Missing Modalities Using Pathology Foundation Models
 
 A self-contained benchmark for predicting spot-level gene expression from routine H&E histology when parts of the input
 are **missing**. It contains our model (**OURS**), several variants of it, and re-implementations of published
